@@ -1,3 +1,4 @@
+import 'package:ecomerce/features/auth/ui/screens/otp_verification_screen.dart';
 import 'package:ecomerce/features/auth/ui/widgets/app_logo_widget.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   'Welcome Back',
                   style: textTheme.titleLarge,
                 ),
+                const SizedBox(height: 4),
                 Text(
                   'Please Enter your Email Address',
                   style: textTheme.bodyLarge?.copyWith(
@@ -48,17 +50,19 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   decoration: const InputDecoration(
                     hintText: 'Email Address',
                   ),
-                  validator: (String? value){
-                    if(value?.trim().isEmpty ?? true){
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
                       return 'Enter your Email address';
                     }
-                    if(!EmailValidator.validate(value!)){
+                    if (!EmailValidator.validate(value!)) {
                       return 'Enter a valid Email';
                     }
                     return null;
                   },
                 ),
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 ElevatedButton(
                   onPressed: _onTapNextButton,
                   child: const Text('Next'),
@@ -70,8 +74,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       ),
     );
   }
-  void _onTapNextButton(){
+
+  void _onTapNextButton() {
+    Navigator.pushReplacementNamed(context, OTPVerificationScreen.name);
     // if(_formKey.currentState!.validate()){
     // }
-}
+  }
 }

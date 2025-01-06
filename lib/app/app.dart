@@ -1,4 +1,5 @@
 import 'package:ecomerce/app/app_theme_data.dart';
+import 'package:ecomerce/features/auth/ui/screens/otp_verification_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/verify_email_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class CraftyBay extends StatelessWidget {
       routes: {
         SplashScreen.name : (context)=> const SplashScreen(),
         VerifyEmailScreen.name : (context)=> const VerifyEmailScreen(),
+        OTPVerificationScreen.name : (context)=> const OTPVerificationScreen(),
       },
     );
   }
