@@ -1,9 +1,10 @@
 import 'package:ecomerce/app/app_theme_data.dart';
+import 'package:ecomerce/app/controller_binder.dart';
 import 'package:ecomerce/features/auth/ui/screens/otp_verification_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/verify_email_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../features/auth/ui/screens/complete_profile_screen.dart';
 
 class CraftyBay extends StatelessWidget {
@@ -11,8 +12,10 @@ class CraftyBay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  GetMaterialApp(
       theme: AppThemeData.lightThemeData,
+      themeMode: ThemeMode.light,
+      initialBinding: ControllerBinders(),
       initialRoute: '/',
       routes: {
         SplashScreen.name : (context)=> const SplashScreen(),
