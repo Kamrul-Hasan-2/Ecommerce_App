@@ -3,6 +3,7 @@ import 'package:ecomerce/app/controller_binder.dart';
 import 'package:ecomerce/features/auth/ui/screens/otp_verification_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/verify_email_screen.dart';
+import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../features/auth/ui/screens/complete_profile_screen.dart';
@@ -22,6 +23,8 @@ class CraftyBay extends StatelessWidget {
         VerifyEmailScreen.name : (context)=> const VerifyEmailScreen(),
         OTPVerificationScreen.name : (context)=> const OTPVerificationScreen(),
         CompleteProfileScreen.name : (context)=> const CompleteProfileScreen(),
+      //  HomeScreen.name : (context)=> const HomeScreen(),
+        MainBottomNavScreen.name : (context)=> const MainBottomNavScreen(),
       },
     );
   }
