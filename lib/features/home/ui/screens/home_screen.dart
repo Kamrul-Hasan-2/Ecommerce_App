@@ -1,6 +1,8 @@
 import 'package:ecomerce/app/assets_path.dart';
 import 'package:ecomerce/features/home/ui/widget/app_bar_icon_button.dart';
+import 'package:ecomerce/features/home/ui/widget/category_item_widget.dart';
 import 'package:ecomerce/features/home/ui/widget/home_carousel_slider.dart';
+import 'package:ecomerce/features/home/ui/widget/home_section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../widget/product_search_bar.dart';
@@ -32,11 +34,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 16),
                 const HomeCarouselSlider(),
-                //TODO : 54 min er por theke abar suru korbo
+                const SizedBox(height: 8),
+                HomeSectionHeader(
+                  title: 'All Categories',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getCategoriesList(),
+                  ),
+                ),
+
+                //TODO : 23 min
               ],
             ),
           ),
         ));
+  }
+
+  List<Widget> _getCategoriesList() {
+    List<Widget> categoriesList = [];
+    for (int i = 0; i < 10; i++) {
+      categoriesList.add(const Padding(
+        padding: EdgeInsets.only(right: 16),
+        child: CategoryItemWidget(),
+      ));
+    }
+    return categoriesList;
   }
 
   AppBar _buildAppBar() {
@@ -65,4 +93,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
