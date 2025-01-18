@@ -13,7 +13,7 @@ class CategoryItemWidget extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-              color: AppColors.themeColor.withOpacity(0.1),
+              color: AppColors.themeColor.withOpacity(0.14),
               borderRadius: BorderRadius.circular(4)),
           child: const Icon(
             Icons.computer,

@@ -3,6 +3,7 @@ import 'package:ecomerce/features/home/ui/widget/app_bar_icon_button.dart';
 import 'package:ecomerce/features/home/ui/widget/category_item_widget.dart';
 import 'package:ecomerce/features/home/ui/widget/home_carousel_slider.dart';
 import 'package:ecomerce/features/home/ui/widget/home_section_header.dart';
+import 'package:ecomerce/features/home/ui/widget/product_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../widget/product_search_bar.dart';
@@ -39,21 +40,55 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: 'All Categories',
                   onTap: () {},
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
+                const SizedBox(height: 8),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: _getCategoriesList(),
                   ),
                 ),
-
-                //TODO : 23 min
+                const SizedBox(height: 16),
+                HomeSectionHeader(title: 'Popular', onTap: () {}),
+                const SizedBox(height: 8),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                HomeSectionHeader(title: 'Special', onTap: () {}),
+                const SizedBox(height: 8),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                HomeSectionHeader(title: 'New', onTap: () {}),
+                const SizedBox(height: 8),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
               ],
             ),
           ),
         ));
+  }
+
+  List<Widget> _getProductList() {
+    List<Widget> productList = [];
+    for (int i = 0; i < 10; i++) {
+      productList.add(const Padding(
+        padding: EdgeInsets.only(right: 16),
+        child: ProductItemWidget(),
+      ));
+    }
+    return productList;
   }
 
   List<Widget> _getCategoriesList() {
@@ -93,3 +128,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
