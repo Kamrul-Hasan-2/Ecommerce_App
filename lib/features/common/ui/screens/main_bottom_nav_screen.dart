@@ -1,3 +1,4 @@
+import 'package:ecomerce/features/categories/ui/screen/categorie_list_screen.dart';
 import 'package:ecomerce/features/common/ui/controller/main_bottom_nav_controller.dart';
 import 'package:ecomerce/features/home/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,10 @@ class MainBottomNavScreen extends StatefulWidget {
 
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final List<Widget> _screens = const [
-      HomeScreen(),
-      HomeScreen(),
-      HomeScreen(),
-      HomeScreen(),
+    HomeScreen(),
+    CategorieListScreen(),
+    HomeScreen(),
+    HomeScreen(),
   ];
 
   @override
