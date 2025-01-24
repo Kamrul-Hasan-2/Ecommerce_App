@@ -4,7 +4,7 @@ import 'package:ecomerce/features/home/ui/widget/app_bar_icon_button.dart';
 import 'package:ecomerce/features/common/ui/widgets/category_item_widget.dart';
 import 'package:ecomerce/features/home/ui/widget/home_carousel_slider.dart';
 import 'package:ecomerce/features/home/ui/widget/home_section_header.dart';
-import 'package:ecomerce/features/home/ui/widget/product_list_widget.dart';
+import 'package:ecomerce/features/common/ui/widgets/product_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

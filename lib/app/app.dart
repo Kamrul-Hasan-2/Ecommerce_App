@@ -5,6 +5,8 @@ import 'package:ecomerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecomerce/features/auth/ui/screens/verify_email_screen.dart';
 import 'package:ecomerce/features/categories/ui/screen/categorie_list_screen.dart';
 import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
+import 'package:ecomerce/features/product/ui/screens/product_details_screen.dart';
+import 'package:ecomerce/features/product/ui/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../features/auth/ui/screens/complete_profile_screen.dart';
@@ -19,15 +21,32 @@ class CraftyBay extends StatelessWidget {
       themeMode: ThemeMode.light,
       initialBinding: ControllerBinders(),
       initialRoute: '/',
-      routes: {
-        SplashScreen.name : (context)=> const SplashScreen(),
-        VerifyEmailScreen.name : (context)=> const VerifyEmailScreen(),
-        OTPVerificationScreen.name : (context)=> const OTPVerificationScreen(),
-        CompleteProfileScreen.name : (context)=> const CompleteProfileScreen(),
-      //  HomeScreen.name : (context)=> const HomeScreen(),
-        MainBottomNavScreen.name : (context)=> const MainBottomNavScreen(),
-        CategorieListScreen.name : (context)=> const CategorieListScreen(),
+      onGenerateRoute: (RouteSettings settings) {
+        late Widget widget;
+        if(settings.name == SplashScreen.name){
+          widget = const SplashScreen();
+        }else if(settings.name == VerifyEmailScreen.name){
+          widget = const VerifyEmailScreen();
+        }else if(settings.name == OTPVerificationScreen.name){
+          widget = const OTPVerificationScreen();
+        }else if(settings.name == CompleteProfileScreen.name){
+          widget = const CompleteProfileScreen();
+        }else if(settings.name == MainBottomNavScreen.name){
+          widget = const MainBottomNavScreen();
+        }else if(settings.name == CategorieListScreen.name){
+          widget = const CategorieListScreen();
+        }else if(settings.name == ProductListScreen.name){
+          String name = settings.arguments as String;
+          widget =  ProductListScreen(categoryName: name);
+        }else if(settings.name == ProductDetailsScreen.name){
+          int productId = settings.arguments as int;
+          widget =  ProductDetailsScreen(productId: productId);
+        }
+        return MaterialPageRoute(builder: (ctx){
+          return widget;
+        });
       },
+
     );
   }
 }

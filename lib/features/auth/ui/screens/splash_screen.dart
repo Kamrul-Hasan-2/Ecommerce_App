@@ -1,6 +1,5 @@
 import 'package:ecomerce/features/auth/ui/widgets/app_logo_widget.dart';
 import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
-import 'package:ecomerce/features/home/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
