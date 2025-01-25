@@ -34,6 +34,5 @@ class CategorieListScreen extends StatelessWidget {
   void _onPop(){
     Get.find<MainBottomNavController>().backToHome();
   }
-  //TODO : 40
 }
 

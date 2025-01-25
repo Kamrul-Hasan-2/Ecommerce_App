@@ -1,7 +1,7 @@
 import 'package:ecomerce/app/app_colors.dart';
 import 'package:ecomerce/features/product/ui/widget/color_picker_widget.dart';
 import 'package:ecomerce/features/product/ui/widget/product_image_carousel_slider.dart';
-import 'package:ecomerce/features/product/ui/widget/product_quantity_inc_dec_button.dart';
+import 'package:ecomerce/features/common/ui/widgets/product_quantity_inc_dec_button.dart';
 import 'package:ecomerce/features/product/ui/widget/size_picker_widget.dart';
 import 'package:flutter/material.dart';
 
