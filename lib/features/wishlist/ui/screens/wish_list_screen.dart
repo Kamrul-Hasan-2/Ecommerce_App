@@ -15,13 +15,15 @@ class _WishListScreenState extends State<WishListScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (_, __)=>_onPop,
+      onPopInvokedWithResult: (_, __) => _onPop,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Wish List'),
           leading: IconButton(
-              onPressed: () =>_onPop,
-              icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              _onPop();
+            },
+            icon: const Icon(Icons.arrow_back_ios),
           ),
         ),
         body: GridView.builder(
@@ -39,7 +41,8 @@ class _WishListScreenState extends State<WishListScreen> {
       ),
     );
   }
-  void _onPop(){
+
+  void _onPop() {
     Get.find<MainBottomNavController>().backToHome();
   }
 }

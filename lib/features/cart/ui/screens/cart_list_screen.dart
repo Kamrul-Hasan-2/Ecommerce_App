@@ -1,8 +1,6 @@
 import 'package:ecomerce/app/app_colors.dart';
-import 'package:ecomerce/app/assets_path.dart';
 import 'package:ecomerce/features/cart/ui/widget/cart_product_item_widget.dart';
 import 'package:ecomerce/features/common/ui/controller/main_bottom_nav_controller.dart';
-import 'package:ecomerce/features/common/ui/widgets/product_quantity_inc_dec_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +21,9 @@ class _CartListScreenState extends State<CartListScreen> {
         appBar: AppBar(
           title: const Text('Cart'),
           leading: IconButton(
-            onPressed: () => _onPop,
+            onPressed: () {
+              _onPop();
+            },
             icon: const Icon(Icons.arrow_back_ios),
           ),
         ),
