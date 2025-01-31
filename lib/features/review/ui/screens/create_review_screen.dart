@@ -27,7 +27,6 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              const SizedBox(height: 24),
               _buildForm(),
               const SizedBox(height: 16),
               ElevatedButton(
