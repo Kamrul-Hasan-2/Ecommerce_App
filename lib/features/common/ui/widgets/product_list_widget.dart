@@ -85,5 +85,3 @@ class ProductItemWidget extends StatelessWidget {
     );
   }
 }
-
-// TODO:  23 min

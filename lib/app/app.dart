@@ -7,6 +7,8 @@ import 'package:ecomerce/features/categories/ui/screen/categorie_list_screen.dar
 import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:ecomerce/features/product/ui/screens/product_details_screen.dart';
 import 'package:ecomerce/features/product/ui/screens/product_list_screen.dart';
+import 'package:ecomerce/features/review/ui/screens/create_review_screen.dart';
+import 'package:ecomerce/features/review/ui/screens/review_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../features/auth/ui/screens/complete_profile_screen.dart';
@@ -42,6 +44,10 @@ class CraftyBay extends StatelessWidget {
         }else if(settings.name == ProductDetailsScreen.name){
           int productId = settings.arguments as int;
           widget =  ProductDetailsScreen(productId: productId);
+        }else if(settings.name == ReviewListScreen.name){
+          widget = const ReviewListScreen();
+        }else if(settings.name == CreateReviewScreen.name){
+          widget = const CreateReviewScreen();
         }
         return MaterialPageRoute(builder: (ctx){
           return widget;

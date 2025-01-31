@@ -3,6 +3,7 @@ import 'package:ecomerce/features/product/ui/widget/color_picker_widget.dart';
 import 'package:ecomerce/features/product/ui/widget/product_image_carousel_slider.dart';
 import 'package:ecomerce/features/common/ui/widgets/product_quantity_inc_dec_button.dart';
 import 'package:ecomerce/features/product/ui/widget/size_picker_widget.dart';
+import 'package:ecomerce/features/review/ui/screens/review_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -65,7 +66,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         ],
                                       ),
                                       TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, ReviewListScreen.name);
+                                          },
                                           child: const Text('Reviews')),
                                       Container(
                                         padding: const EdgeInsets.all(4),
