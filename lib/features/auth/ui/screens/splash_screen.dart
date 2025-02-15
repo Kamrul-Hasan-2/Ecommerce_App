@@ -1,3 +1,4 @@
+import 'package:ecomerce/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ecomerce/features/auth/ui/widgets/app_logo_widget.dart';
 import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2));
-    Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
+    Navigator.pushReplacementNamed(context, SignInScreen.name);
   }
 
   @override

@@ -24,12 +24,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
+              const SizedBox(height: 40),
               const AppLogoWidget(
                 height: 100,
                 width: 100,

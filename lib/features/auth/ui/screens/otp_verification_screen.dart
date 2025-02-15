@@ -45,7 +45,6 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -53,7 +52,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
             key: _formKey,
             child: Column(
               children: [
-                const SizedBox(height: 45),
+                const SizedBox(height: 100),
                 const AppLogoWidget(),
                 const SizedBox(height: 24),
                 Text(
@@ -135,9 +134,9 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   }
 
   void _onTapNextButton() {
-    Navigator.pushReplacementNamed(context, CompleteProfileScreen.name);
-    // if(_formKey.currentState!.validate()){
-    // }
+    //Navigator.pushReplacementNamed(context, CompleteProfileScreen.name);
+    if(_formKey.currentState!.validate()){
+    }
   }
 
   @override
