@@ -39,12 +39,6 @@ CraftyBay is a feature-rich eCommerce mobile application built using Flutter. It
    flutter run
    ```
 
-## Screenshots
-
-Here are some UI previews of the application:
-
-![Screenshots](all.png)
-
 ## Folder Structure
 
 ```
