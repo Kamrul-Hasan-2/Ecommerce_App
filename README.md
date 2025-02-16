@@ -24,7 +24,7 @@ CraftyBay is a feature-rich eCommerce mobile application built using Flutter. It
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/craftybay.git
+   git clone https://github.com/Kamrul-Hasan-2/Ecommerce_App.git
    ```
 2. Navigate to the project directory:
    ```sh
