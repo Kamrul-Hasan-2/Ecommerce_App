@@ -1,6 +1,5 @@
 # CraftyBay - eCommerce Mobile App
-
-![CraftyBay](all.png)
+![all (1)](https://github.com/user-attachments/assets/7cdf1353-9296-443e-8551-65fe01fddb83)
 
 CraftyBay is a feature-rich eCommerce mobile application built using Flutter. It provides users with a seamless shopping experience, including product browsing, authentication, cart management, and checkout functionality.
 
