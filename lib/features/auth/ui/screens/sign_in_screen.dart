@@ -119,9 +119,17 @@ class _SignInScreenState extends State<SignInScreen> {
       bool isSuccess = await _signInController.signIn(
           _emailTEController.text.trim(), _passwordTEController.text);
       if (isSuccess) {
-        Navigator.pushNamed(context, OTPVerificationScreen.name);
+        if (mounted) {
+          Navigator.pushNamed(
+            context,
+            OTPVerificationScreen.name,
+            arguments: _emailTEController.text.trim(),
+          );
+        }
       } else {
-        showSnackBarMessage(context, _signInController.errorMessage!, true);
+        if (mounted) {
+          showSnackBarMessage(context, _signInController.errorMessage!);
+        }
       }
       //
     }

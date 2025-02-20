@@ -1,16 +1,19 @@
 import 'dart:async';
 import 'package:ecomerce/app/app_colors.dart';
 import 'package:ecomerce/app/app_constants.dart';
+import 'package:ecomerce/features/auth/ui/controller/verify_otp_controller.dart';
 import 'package:ecomerce/features/auth/ui/screens/complete_profile_screen.dart';
 import 'package:ecomerce/features/auth/ui/widgets/app_logo_widget.dart';
+import 'package:ecomerce/features/common/ui/widgets/centered_circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
-  const OTPVerificationScreen({super.key});
+  const OTPVerificationScreen({super.key, required this.email});
 
   static const String name = '/otp-verification';
+  final String email;
 
   @override
   State<OTPVerificationScreen> createState() => _OTPVerificationScreenState();
@@ -22,6 +25,8 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   final RxInt _remainingTime = AppConstants.resendOtpTimeOutInSecs.obs;
   final RxBool _enableResendCodeButton = false.obs;
   late Timer timer;
+  final VerifyOTPController _verifyOTPController =
+      Get.find<VerifyOTPController>();
 
   @override
   void initState() {
@@ -69,7 +74,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 const SizedBox(height: 24),
                 PinCodeTextField(
                   keyboardType: TextInputType.number,
-                  length: 6,
+                  length: 4,
                   obscureText: false,
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(
@@ -89,12 +94,23 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   enableActiveFill: true,
                   controller: _otpTEController,
                   appContext: context,
+                  validator: (String? value) {
+                    if (value?.length != 4) {
+                      return 'Enter Your otp';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: _onTapNextButton,
-                  child: const Text('Next'),
-                ),
+                GetBuilder<VerifyOTPController>(builder: (controller) {
+                  if (controller.inProgress) {
+                    return const CenteredCircularProgressIndicator();
+                  }
+                  return ElevatedButton(
+                    onPressed: _onTapNextButton,
+                    child: const Text('Next'),
+                  );
+                }),
                 const SizedBox(height: 16),
                 Obx(
                   () => Visibility(
@@ -133,9 +149,11 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
     );
   }
 
-  void _onTapNextButton() {
+  Future<void> _onTapNextButton() async {
     //Navigator.pushReplacementNamed(context, CompleteProfileScreen.name);
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
+      final bool isSuccess = await _verifyOTPController.verifyOTP(
+          widget.email, _otpTEController.text);
     }
   }
 
