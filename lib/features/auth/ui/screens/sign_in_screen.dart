@@ -128,7 +128,7 @@ class _SignInScreenState extends State<SignInScreen> {
         }
       } else {
         if (mounted) {
-          showSnackBarMessage(context, _signInController.errorMessage!);
+          snackBarMessage(context, _signInController.errorMessage!);
         }
       }
       //

@@ -4,7 +4,10 @@ import 'package:ecomerce/app/app_constants.dart';
 import 'package:ecomerce/features/auth/ui/controller/verify_otp_controller.dart';
 import 'package:ecomerce/features/auth/ui/screens/complete_profile_screen.dart';
 import 'package:ecomerce/features/auth/ui/widgets/app_logo_widget.dart';
+import 'package:ecomerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:ecomerce/features/common/ui/widgets/centered_circular_progress_indicator.dart';
+import 'package:ecomerce/features/common/ui/widgets/snack_bar_message.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -150,10 +153,25 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   }
 
   Future<void> _onTapNextButton() async {
-    //Navigator.pushReplacementNamed(context, CompleteProfileScreen.name);
     if (_formKey.currentState!.validate()) {
       final bool isSuccess = await _verifyOTPController.verifyOTP(
           widget.email, _otpTEController.text);
+      if (isSuccess) {
+        if (_verifyOTPController.shouldNavigateCompleteProfile) {
+          if (mounted) {
+            Navigator.pushNamed(context, CompleteProfileScreen.name);
+          }
+        } else {
+          if (mounted) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, MainBottomNavScreen.name, (predicate) => false);
+          }
+        }
+      } else {
+        if (mounted) {
+          snackBarMessage(context, _verifyOTPController.errorMessage!);
+        }
+      }
     }
   }
 
