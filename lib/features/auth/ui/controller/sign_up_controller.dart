@@ -4,7 +4,7 @@ import 'package:ecomerce/services/network_caller/network_caller.dart';
 import 'package:get/get.dart';
 import '../../../../app/urls.dart';
 
-class SignInController extends GetxController {
+class SignUpController extends GetxController {
   bool _inProgress = false;
 
   bool get inProgress => _inProgress;
@@ -13,7 +13,7 @@ class SignInController extends GetxController {
 
   String? get errorMessage => _errorMessage;
 
-  Future<bool> signIn(String email, String password) async {
+  Future<bool> signUp(String email, String password) async {
     bool isSuccess = false;
     _inProgress = true;
     update();

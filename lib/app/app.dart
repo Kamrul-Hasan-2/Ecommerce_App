@@ -11,7 +11,7 @@ import 'package:ecomerce/features/review/ui/screens/create_review_screen.dart';
 import 'package:ecomerce/features/review/ui/screens/review_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../features/auth/ui/screens/complete_profile_screen.dart';
+import '../features/auth/ui/screens/sign_up_screen.dart';
 
 class CraftyBay extends StatelessWidget {
   const CraftyBay({super.key});
@@ -33,8 +33,8 @@ class CraftyBay extends StatelessWidget {
         }else if(settings.name == OTPVerificationScreen.name){
           String email = settings.arguments as String;
           widget =  OTPVerificationScreen(email: email);
-        }else if(settings.name == CompleteProfileScreen.name){
-          widget = const CompleteProfileScreen();
+        }else if(settings.name == SignUpScreen.name){
+          widget = const SignUpScreen();
         }else if(settings.name == MainBottomNavScreen.name){
           widget = const MainBottomNavScreen();
         }else if(settings.name == CategorieListScreen.name){
