@@ -26,9 +26,11 @@ class SignInController extends GetxController {
     final NetworkResponse response = await Get.find<NetworkCaller>()
         .postRequest(Urls.verifySignInUrl, body: requestParams);
     if (response.isSuccess) {
-      SignInModel signInModel = SignInModel.fromJson(response.responseData);
-      Get.find<AuthController>().saveUserData(signInModel.data!.token!,
-          signInModel.data!.user!);
+      AuthSuccessModel authSuccessModel = AuthSuccessModel.fromJson(response.responseData);
+      Get.find<AuthController>().saveUserData(
+        authSuccessModel.data!.token!,
+        authSuccessModel.data!.user!,
+      );
       _errorMessage = null;
       isSuccess = true;
     } else {
