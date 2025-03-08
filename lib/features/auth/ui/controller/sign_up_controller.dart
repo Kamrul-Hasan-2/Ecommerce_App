@@ -1,4 +1,5 @@
 import 'package:ecomerce/features/auth/data/models/sign_in_model.dart';
+import 'package:ecomerce/features/auth/data/models/sign_up_params.dart';
 import 'package:ecomerce/services/network_caller/auth_controller.dart';
 import 'package:ecomerce/services/network_caller/network_caller.dart';
 import 'package:get/get.dart';
@@ -13,26 +14,22 @@ class SignUpController extends GetxController {
 
   String? get errorMessage => _errorMessage;
 
-  Future<bool> signUp(String email, String password) async {
+  Future<bool> signUp(SignUpParams params) async {
     bool isSuccess = false;
     _inProgress = true;
     update();
 
-    final requestParams = {
-      "email": email,
-      "password": password,
-    };
 
     final NetworkResponse response = await Get.find<NetworkCaller>()
-        .postRequest(Urls.verifySignInUrl, body: requestParams);
+        .postRequest(Urls.signUpUrl, body: params.toJson());
     if (response.isSuccess) {
-      SignInModel signInModel = SignInModel.fromJson(response.responseData);
-      Get.find<AuthController>().saveUserData(signInModel.data!.token!,
-          signInModel.data!.user!);
+      // SignInModel signInModel = SignInModel.fromJson(response.responseData);
+      // Get.find<AuthController>().saveUserData(signInModel.data!.token!,
+      //     signInModel.data!.user!);
       _errorMessage = null;
       isSuccess = true;
     } else {
-      response.errorMessage;
+      _errorMessage = response.errorMessage;
     }
     _inProgress = false;
     update();

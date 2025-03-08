@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:ecomerce/features/auth/data/models/profile_model.dart';
 import 'package:ecomerce/features/auth/data/models/sign_in_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

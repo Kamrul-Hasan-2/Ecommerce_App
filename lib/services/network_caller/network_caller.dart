@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ecomerce/features/common/ui/controller/error_response_model.dart';
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 
@@ -25,13 +26,13 @@ class NetworkCaller {
       Map<String, String> headers = {
         'content-type': 'application/json',
       };
-      if(accessToken != null){
+      if (accessToken != null) {
         headers['token'] = accessToken;
       }
       _logRequest(url);
       Response response = await get(uri);
       _logResponse(url, response.statusCode, response.headers, response.body);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         final decodedMessage = jsonDecode(response.body);
         return NetworkResponse(
           isSuccess: true,
@@ -39,7 +40,11 @@ class NetworkCaller {
           responseData: decodedMessage,
         );
       } else {
+        final decodedMessage = jsonDecode(response.body);
+        ErrorResponseModel errorResponseModel =
+            ErrorResponseModel.fromJson(decodedMessage);
         return NetworkResponse(
+          errorMessage: errorResponseModel.msg,
           isSuccess: false,
           statusCode: -1,
         );
@@ -65,7 +70,7 @@ class NetworkCaller {
       Response response =
           await post(uri, headers: headers, body: jsonEncode(body));
       _logResponse(url, response.statusCode, response.headers, response.body);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         final decodedMessage = jsonDecode(response.body);
         return NetworkResponse(
           isSuccess: true,
@@ -73,9 +78,13 @@ class NetworkCaller {
           responseData: decodedMessage,
         );
       } else {
+        final decodedMessage = jsonDecode(response.body);
+        ErrorResponseModel errorResponseModel =
+            ErrorResponseModel.fromJson(decodedMessage);
         return NetworkResponse(
+          errorMessage: errorResponseModel.msg,
           isSuccess: false,
-          statusCode: -1,
+          statusCode: response.statusCode,
         );
       }
     } catch (e) {
