@@ -1,5 +1,7 @@
 import 'package:ecomerce/app/assets_path.dart';
 import 'package:ecomerce/features/common/ui/controller/main_bottom_nav_controller.dart';
+import 'package:ecomerce/features/common/ui/widgets/centered_circular_progress_indicator.dart';
+import 'package:ecomerce/features/home/ui/controller/slider_list_controller.dart';
 import 'package:ecomerce/features/home/ui/widget/app_bar_icon_button.dart';
 import 'package:ecomerce/features/common/ui/widgets/category_item_widget.dart';
 import 'package:ecomerce/features/home/ui/widget/home_carousel_slider.dart';
@@ -36,7 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   controller: _searchTEController,
                 ),
                 const SizedBox(height: 16),
-                const HomeCarouselSlider(),
+                GetBuilder<SliderListController>(
+                    builder:(controller){
+                      if(controller.inProgress){
+                        return const SizedBox(
+                          height: 180,
+                          child: CenteredCircularProgressIndicator(),
+                        );
+                      }
+                      return HomeCarouselSlider(
+                        sliderList : controller.bannerList,
+                      );
+                    }
+                ),
                 const SizedBox(height: 8),
                 HomeSectionHeader(
                   title: 'All Categories',
